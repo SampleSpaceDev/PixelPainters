@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, AttachmentBuilder } = require("discord.js");
+const { SlashCommandBuilder, AttachmentBuilder, escapeMarkdown } = require("discord.js");
 const { JSDOM } = require("jsdom");
 const { get } = require("axios");
 const { channelId } = require("../config.json");
@@ -30,7 +30,7 @@ module.exports = {
         }
     
         const theme = doc.querySelector('.theme').textContent;
-        const artist = `By: **${doc.querySelector('.pp-user').textContent.trim()}**`;
+        const artist = `By: **${escapeMarkdown(doc.querySelector('.pp-user').textContent.trim())}**`;
         
         const match = url.match(URL_PATTERN);
         const imageUrl = `https://pp.hypixel.net/${match[1]}.png`;
