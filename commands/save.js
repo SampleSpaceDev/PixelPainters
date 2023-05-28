@@ -30,6 +30,7 @@ module.exports = {
         }
     
         const theme = doc.querySelector('.theme').textContent;
+        const artist = `By: **${doc.querySelector('.pp-user').textContent.trim()}**`;
         
         const match = url.match(URL_PATTERN);
         const imageUrl = `https://pp.hypixel.net/${match[1]}.png`;
@@ -43,7 +44,7 @@ module.exports = {
     
         const channel = interaction.guild.channels.cache.get(channelId);
         await channel.send({
-            content: emphasise(theme),
+            content: emphasise(theme) + `\n${artist}`,
             files: [attachment]
         });
         await interaction.reply({ content: `Saved!`, ephemeral: true });
