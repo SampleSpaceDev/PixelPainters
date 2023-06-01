@@ -41,9 +41,8 @@ module.exports = {
             await interaction.reply({ content: `There was an error when downloading the image!`, ephemeral: true });
             return;
         }
-    
-        const channel = interaction.guild.channels.cache.get(channelId);
-        await channel.send({
+
+        await interaction.channel.send({
             content: emphasise(theme) + `\n${artist}`,
             files: [attachment]
         });
